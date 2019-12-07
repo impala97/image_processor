@@ -1,0 +1,198 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>Image Filter JS</title>
+    <meta name="description" content="Filter Image Through User Query">
+    <meta name="author" content="Gabriel Aquende">
+
+<!--    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css" />-->
+    <link href="{{ url_for('static', filename='css/AdminLTE.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ url_for('static', filename='css/ionicons.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ url_for('static', filename='css/font-awesome.css') }}" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="skin-black pace-done">
+    <aside class="center-block">
+        <section class="content-header">
+            <h1>Image Processor & Image Filter</h1>
+        </section>
+
+        <section class="content">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="box box-info">
+                        <div class="box-header">
+                            <h3 class="box-title">Import Image Index</h3>
+                        </div>
+                        <div class="box-body">
+                            <form class="contact-form" id="myform" enctype="multipart/form-data">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">Chart Type:</label>
+                                        <div class="col-sm-4">
+                                            <select id = "chartType" class="form-control">
+                                                <option value="all">All</option>
+                                                <option value="alluvialDiagram">Alluvial Diagram</option>
+                                                <option value="areaChart">Area Chart</option>
+                                                <option value="barGraph">Bar Graph</option>
+                                                <option value="boxAndWhiskers">Box and Whiskers</option>
+                                                <option value="bubbleChart">Bubble Chart</option>
+                                                <option value="connectedScatterPlot">Connected Scatter Plot</option>
+                                                <option value="dotDistributionMap">Dot Distribution Map</option>
+                                                <option value="heatMap">Heat Map</option>
+                                                <option value="isarithmicMap">Isarithmic Map</option>
+                                                <option value="isopleth">Isopleth</option>
+                                                <option value="lineChart">Line Chart</option>
+                                                <option value="model">Model</option>
+                                                <option value="None">None</option>
+                                                <option value="pieChart">Pie Chart</option>
+                                                <option value="proportionalSymbolMap">Proportional Symbol Map</option>
+                                                <option value="polarAre">Polar Are</option>
+                                                <option value="scatterPlot">Scatter Plot</option>
+                                                <option value="stackBarChart">Stack Bar Chart</option>
+                                                <option value="stepChart">Step Chart</option>
+                                                <option value="timeSeries">Time Series</option>
+                                                <option value="unknown">Unknown</option>
+                                                <option value="waterfallChart">Waterfall Chart</option>
+                                                <option value="wedgeStackGraph">Wedge Stack Graph</option>
+                                            </select>
+                                        </div>
+
+                                        <label class="col-sm-2 control-label">Secondary Chart Types:</label>
+                                        <div class="col-sm-4">
+                                            <select id = "secondChartType" class="form-control">
+                                                <option value="all">All</option>
+                                                <option value="alluvialDiagram">Alluvial Diagram</option>
+                                                <option value="areaChart">Area Chart</option>
+                                                <option value="barGraph">Bar Graph</option>
+                                                <option value="boxAndWhiskers">Box and Whiskers</option>
+                                                <option value="bubbleChart">Bubble Chart</option>
+                                                <option value="connectedScatterPlot">Connected Scatter Plot</option>
+                                                <option value="dotDistributionMap">Dot Distribution Map</option>
+                                                <option value="heatMap">Heat Map</option>
+                                                <option value="isarithmicMap">Isarithmic Map</option>
+                                                <option value="isopleth">Isopleth</option>
+                                                <option value="lineChart">Line Chart</option>
+                                                <option value="model">Model</option>
+                                                <option value="None">None</option>
+                                                <option value="pieChart">Pie Chart</option>
+                                                <option value="proportionalSymbolMap">Proportional Symbol Map</option>
+                                                <option value="polarAre">Polar Are</option>
+                                                <option value="scatterPlot">Scatter Plot</option>
+                                                <option value="stackBarChart">Stack Bar Chart</option>
+                                                <option value="stepChart">Step Chart</option>
+                                                <option value="timeSeries">Time Series</option>
+                                                <option value="unknown">Unknown</option>
+                                                <option value="waterfallChart">Waterfall Chart</option>
+                                                <option value="wedgeStackGraph">Wedge Stack Graph</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div> <br />
+
+                                <div class="row">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">Year:</label>
+                                        <div class="col-sm-4">
+                                            <select  id = "Year" class="form-control">
+                                                <option value="all">All</option>
+                                                <option value="2007">2007</option>
+                                                <option value="2012">2012</option>
+                                                <option value="2014">2014</option>
+                                                <option value="2017">2017</option>
+                                                <option value="2018">2018</option>
+                                            </select>
+                                        </div>
+
+                                        <label class="col-sm-2 control-label">PDF Source:</label>
+                                        <div class="col-sm-4">
+                                            <select id = "PDF" class="form-control">
+                                                <option value="all">all</option>
+                                                <option value="PDF1">Climate Science Special Report Volume 1</option>
+                                                <option value="PDF2">Special Report: Global Warming of 1.5c Chapter 1 Framing and Context</option>
+                                                <option value="PDF3">Special Report: Global Warming of 1.5c Chapter 2 Mitigation Pathways Compatible with 1.5�C in the Context of Sustainable Development</option>
+                                                <option value="PDF4">Special Report: Global Warming of 1.5c Chapter 3 Impacts of 1.5C of Global Warming on Natural and Human Systems</option>
+                                                <option value="PDF5">Special Report: Global Warming of 1.5c Chapter 4 Strengthening and Implementing the Global Response</option>
+                                                <option value="PDF6">Special Report: Global Warming of 1.5c Chapter 5 Sustainable Development, Poverty Eradication and Reducing Inequalities</option>
+                                                <option value="PDF7">Climate Change 2014 Synthesis Report</option>
+                                                <option value="PDF8">Climate Change 2014 Impacts, Adaptation, and Vulnerability Part A: Global and Sectoral Aspects</option>
+                                                <option value="PDF9">Managing the Risks of Extreme Events and Disasters to Advance Climate Change Adaptation</option>
+                                                <option value="PDF10">Renewable Energy Sources and Climate Change Mitigation</option>
+                                                <option value="PDF11">Climate Change 2007 Synthesis Report</option>
+                                                <option value="PDF12">Climate Change 2007: Impacts, Adaptation and Vulnerability</option>
+                                                <option value="PDF13">Climate Change 2007 Mitigation</option>
+                                                <option value="PDF14">2007 The Physical Science Basis</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div> <br />
+
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="col-sm-2">
+                                            <button id="filter" class="btn btn-primary bg-blue" type="button">Filter Image</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content" id="imgSection" style="width:auto;height:auto;display: none">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box box-info">
+                        <div class="box-header">
+                            <h3 class="box-title">Filtered Images</h3>
+                        </div>
+                        <div class="box-body">
+                            <div class="image img-responsive">
+                                <div id="imgDiv" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $('#filter').bind('click', function () {
+            $.ajax({
+                url:"{{ url_for('home') }}",
+                data: {
+                    chartType:$('#chartType option:selected').text(),
+                    secondChartType:$('#secondChartType option:selected').text(),
+                    PDF:$('#PDF option:selected').text(),
+                    Year:$('#Year').val()},
+                type:'POST',
+                sync: true,
+                success: function(response) {
+                    let data = JSON.parse(response);
+                    $("#imgSection").show();
+                    $("#imgDiv").html('');
+                    for (var i = 0, j = data.length; i < j; i++){
+                        var img_html = '<img halt="dp" width="400px" height="400px" src="' + data[i][1] + '" </img>';
+                        var a_html = '<a class="img-thumbnail image" href="/image/' + data[i][0] + '">' + img_html+'</a>';
+
+                        $('#imgDiv').append(a_html);
+                    }
+                    $("#imgSection").show();
+                },
+                error:function (error) {
+                    console.log(error);
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
